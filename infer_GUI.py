@@ -44,7 +44,7 @@ def process_image(image):
 # ---------------------
 st.title("交通视频/图像目标检测系统")
 st.markdown(
-    "<div style='color: gray; font-size: 14px;'>来源：第一届“数据链杯”人工智能算法大赛 · 腾宇悦团队</div>",
+    "<div style='color: gray; font-size: 18px;'>来源：第一届“数据链杯”人工智能算法大赛 · 腾宇悦团队</div>",
     unsafe_allow_html=True
 )
 option = st.sidebar.radio("输入类型", ["Image", "Video", "Camera"])
