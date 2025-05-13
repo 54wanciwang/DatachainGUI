@@ -1,4 +1,12 @@
 import streamlit as st
+
+st.set_page_config(
+    page_title="腾宇悦目标检测",       # 浏览器标签页上显示的文字
+    page_icon="🚀",                # favicon：可以是 emoji，也可以是本地图片文件路径
+    layout="wide",                   # （可选）页面布局方式
+    initial_sidebar_state="expanded" # （可选）侧边栏默认展开
+)
+
 from ultralytics import YOLO
 import cv2
 import numpy as np
@@ -8,6 +16,9 @@ import time
 import os, sys
 
 # ✅ 检测是否是 PyInstaller 打包环境
+
+
+
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -44,7 +55,11 @@ def process_image(image):
 # ---------------------
 st.title("交通视频/图像目标检测系统")
 st.markdown(
-    "<div style='color: gray; font-size: 25px;'>来源：第一届“数据链杯”人工智能算法大赛 · 腾宇悦团队</div>",
+    "<div style='color: gray; font-size: 20px;'>来源：第一届“数据链杯”人工智能算法大赛 · 腾宇悦团队</div>",
+    unsafe_allow_html=True
+)
+st.markdown(
+    "<div style='color: gray; font-size: 20px;'> </div>",
     unsafe_allow_html=True
 )
 option = st.sidebar.radio("输入类型", ["Image", "Video"])
