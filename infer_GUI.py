@@ -12,8 +12,8 @@ import os, sys
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 MODEL_PATHS = {
-    "Datachain_交通目标识别_base": os.path.join(BASE_DIR, "models", "datachain_o.pt"),
-    "Datachain_交通目标识别_light": os.path.join(BASE_DIR, "models", "datachain_light.pt"),
+    "Datachain_交通目标识别_light": os.path.join(BASE_DIR, "models", "datachain_o.pt"),
+    "Datachain_交通目标识别_base": os.path.join(BASE_DIR, "models", "datachain_light.pt"),
     "Datachain_交通目标识别_large": os.path.join(BASE_DIR, "models", "datachain_max.pt"),
 }
 # MODEL_PATHS = {
@@ -44,10 +44,10 @@ def process_image(image):
 # ---------------------
 st.title("交通视频/图像目标检测系统")
 st.markdown(
-    "<div style='color: gray; font-size: 18px;'>来源：第一届“数据链杯”人工智能算法大赛 · 腾宇悦团队</div>",
+    "<div style='color: gray; font-size: 25px;'>来源：第一届“数据链杯”人工智能算法大赛 · 腾宇悦团队</div>",
     unsafe_allow_html=True
 )
-option = st.sidebar.radio("输入类型", ["Image", "Video", "Camera"])
+option = st.sidebar.radio("输入类型", ["Image", "Video"])
 
 # ---------------------
 # 图像识别
@@ -65,23 +65,6 @@ if option == "Image":
                 Image.fromarray(processed).save(f.name)
                 st.success(f"已保存至: {f.name}")
 
-# ---------------------
-# 摄像头识别
-# ---------------------
-elif option == "Camera":
-    run = st.checkbox("开启摄像头")
-    FRAME_WINDOW = st.image([])
-    camera = cv2.VideoCapture(0)
-
-    while run:
-        success, frame = camera.read()
-        if not success:
-            break
-        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-        processed = process_image(frame.copy())
-        FRAME_WINDOW.image(processed)
-    else:
-        camera.release()
 
 # ---------------------
 # 视频识别
